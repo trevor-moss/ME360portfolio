@@ -248,7 +248,7 @@
   }
 
   .exercise-container {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .exercise-header {
@@ -285,7 +285,7 @@
     width: 100%;
     height: auto;
     display: block;
-    max-height: 400px;
+    min-height: 300px;
     object-fit: contain;
     background: white;
   }
@@ -297,6 +297,10 @@
     letter-spacing: 0.08em;
     padding: 0.6rem 0.8rem;
     border-top: 1px solid var(--border);
+  }
+
+  .exercise-single {
+    max-width: 600px;
   }
 
   footer {
@@ -383,8 +387,10 @@
           <div>
             <h4>Approach</h4>
             <ul>
-              <li>Graphical two-position synthesis using perpendicular bisectors</li>
+              <li>Graphical two-position synthesis</li>
+              <li>Ground pivot locations and all link lengths</li>
               <li>Verification of motion extremes at A and B</li>
+              <li>Coupler path trace through full range of motion</li>
             </ul>
           </div>
         </div>
@@ -392,12 +398,13 @@
 
       <!-- Exercises Tab -->
       <div id="card1-exercises" class="tab-content">
+        
         <!-- Exercise 1 -->
         <div class="exercise-container">
           <div class="exercise-header">Exercise 1: Four-Bar Linkage Analysis</div>
-          <div class="exercise-item">
-            <img src="images/exercise-1.png" alt="Exercise 1: Four-Bar Linkage Analysis">
-            <div class="exercise-label">Linkage configuration analysis</div>
+          <div class="exercise-item exercise-single">
+            <img src="images/exercise1.1.2.gif" alt="Exercise 1: Four-Bar Linkage Analysis">
+            <div class="exercise-label">Linkage configuration & motion analysis</div>
           </div>
         </div>
 
@@ -406,15 +413,46 @@
           <div class="exercise-header">Exercise 2.1: Mechanism Synthesis</div>
           <div class="exercise-grid">
             <div class="exercise-item">
-              <img src="images/exercise-2-1-1.png" alt="Exercise 2.1.1: Position 1 Analysis">
+              <img src="images/exercise2.1.1.gif" alt="Exercise 2.1.1: Position 1 Analysis">
               <div class="exercise-label">2.1.1 — Position 1 Analysis</div>
             </div>
             <div class="exercise-item">
-              <img src="images/exercise-2-1-2.png" alt="Exercise 2.1.2: Position 2 Analysis">
+              <img src="images/exercise2.1.2.gif" alt="Exercise 2.1.2: Position 2 Analysis">
               <div class="exercise-label">2.1.2 — Position 2 Analysis</div>
             </div>
           </div>
         </div>
+
+        <!-- Exercise 2.2 -->
+        <div class="exercise-container">
+          <div class="exercise-header">Exercise 2.2: Link Length Optimization</div>
+          <div class="exercise-grid">
+            <div class="exercise-item">
+              <img src="images/exercise2.2.1.gif" alt="Exercise 2.2.1: Optimization Step 1">
+              <div class="exercise-label">2.2.1 — Initial Configuration</div>
+            </div>
+            <div class="exercise-item">
+              <img src="images/exercise2.2.2.gif" alt="Exercise 2.2.2: Optimization Step 2">
+              <div class="exercise-label">2.2.2 — Optimized Configuration</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exercise 2.3 -->
+        <div class="exercise-container">
+          <div class="exercise-header">Exercise 2.3: Coupler Path Verification</div>
+          <div class="exercise-grid">
+            <div class="exercise-item">
+              <img src="images/exercise2.3.1.gif" alt="Exercise 2.3.1: Path Trace 1">
+              <div class="exercise-label">2.3.1 — Coupler Path Trajectory</div>
+            </div>
+            <div class="exercise-item">
+              <img src="images/exercise2.3.2.gif" alt="Exercise 2.3.2: Path Trace 2">
+              <div class="exercise-label">2.3.2 — Motion Verification</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
