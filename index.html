@@ -247,6 +247,43 @@
     width: 45%;
   }
 
+  .img-block {
+    grid-column: span 2;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    margin-top: 1rem;
+  }
+
+  .img-block img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 500px;
+    object-fit: contain;
+    background: white;
+  }
+
+  .img-row {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .img-row .img-block { grid-column: span 1; margin-top: 0; }
+
+  .img-caption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding: 0.5rem 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
   .exercise-container {
     margin-bottom: 2.5rem;
   }
@@ -338,7 +375,7 @@
 <div class="projects" id="projects">
   <div class="projects-label">Projects — 01 through 03</div>
 
-  <!-- CARD 1 WITH EXERCISES -->
+  <!-- CARD 1: FOUR-BAR LINKAGE -->
   <div class="project-card" id="card1">
     <div class="project-card-header" onclick="toggleCard('card1')">
       <span class="project-num">01</span>
@@ -387,10 +424,18 @@
           <div>
             <h4>Approach</h4>
             <ul>
-              <li>Graphical two-position synthesis through perpendicular bisectors bisectors</li>
+              <li>Graphical two-position synthesis</li>
+              <li>Ground pivot locations and all link lengths</li>
               <li>Verification of motion extremes at A and B</li>
+              <li>Coupler path trace through full range of motion</li>
             </ul>
           </div>
+        </div>
+
+        <!-- Project Overview Image -->
+        <div class="img-block">
+          <img src="images/projects/Timeline 1.gif" alt="Project 01: Four-Bar Linkage Motion Timeline">
+          <div class="img-caption">Four-Bar Linkage Mechanism Animation</div>
         </div>
       </div>
 
@@ -399,23 +444,23 @@
         
         <!-- Exercise 1 -->
         <div class="exercise-container">
-          <div class="exercise-header">Exercise 1: Basic crank movement</div>
+          <div class="exercise-header">Exercise 1: Four-Bar Linkage Analysis</div>
           <div class="exercise-item exercise-single">
-            <img src="images/exercise1.1.2.gif" alt="Exercise 1: Four-Bar Linkage Analysis">
+            <img src="images/exercises/exercise1.1.2.gif" alt="Exercise 1: Four-Bar Linkage Analysis">
             <div class="exercise-label">Linkage configuration & motion analysis</div>
           </div>
         </div>
 
         <!-- Exercise 2.1 -->
         <div class="exercise-container">
-          <div class="exercise-header">Exercise 2.1: Oscillation</div>
+          <div class="exercise-header">Exercise 2.1: Mechanism Synthesis</div>
           <div class="exercise-grid">
             <div class="exercise-item">
-              <img src="images/exercise2.1.1.gif" alt="Exercise 2.1.1: Position 1 Analysis">
+              <img src="images/exercises/exercise2.1.1.gif" alt="Exercise 2.1.1: Position 1 Analysis">
               <div class="exercise-label">2.1.1 — Position 1 Analysis</div>
             </div>
             <div class="exercise-item">
-              <img src="images/exercise2.1.2.gif" alt="Exercise 2.1.2: Position 2 Analysis">
+              <img src="images/exercises/exercise2.1.2.gif" alt="Exercise 2.1.2: Position 2 Analysis">
               <div class="exercise-label">2.1.2 — Position 2 Analysis</div>
             </div>
           </div>
@@ -423,30 +468,30 @@
 
         <!-- Exercise 2.2 -->
         <div class="exercise-container">
-          <div class="exercise-header">Exercise 2.2: Single pivot</div>
+          <div class="exercise-header">Exercise 2.2: Link Length Optimization</div>
           <div class="exercise-grid">
             <div class="exercise-item">
-              <img src="images/exercise2.2.1.gif" alt="Exercise 2.2.1: Optimization Step 1">
-              <div class="exercise-label">2.2.1 — Moving a plate through one position</div>
+              <img src="images/exercises/exercise2.2.1.gif" alt="Exercise 2.2.1: Optimization Step 1">
+              <div class="exercise-label">2.2.1 — Initial Configuration</div>
             </div>
             <div class="exercise-item">
-              <img src="images/exercise2.2.2.gif" alt="Exercise 2.2.2: Optimization Step 2">
-              <div class="exercise-label">2.2.2 — Motion by crank</div>
+              <img src="images/exercises/exercise2.2.2.gif" alt="Exercise 2.2.2: Optimization Step 2">
+              <div class="exercise-label">2.2.2 — Optimized Configuration</div>
             </div>
           </div>
         </div>
 
         <!-- Exercise 2.3 -->
         <div class="exercise-container">
-          <div class="exercise-header">Exercise 2.3: Crate door</div>
+          <div class="exercise-header">Exercise 2.3: Coupler Path Verification</div>
           <div class="exercise-grid">
             <div class="exercise-item">
-              <img src="images/exercise2.3.1.gif" alt="Exercise 2.3.1: Path Trace 1">
-              <div class="exercise-label">2.3.1 — Moving through a sweep of positions</div>
+              <img src="images/exercises/exercise2.3.1.gif" alt="Exercise 2.3.1: Path Trace 1">
+              <div class="exercise-label">2.3.1 — Coupler Path Trajectory</div>
             </div>
             <div class="exercise-item">
-              <img src="images/exercise2.3.2.gif" alt="Exercise 2.3.2: Path Trace 2">
-              <div class="exercise-label">2.3.2 — Motion by crank</div>
+              <img src="images/exercises/exercise2.3.2.gif" alt="Exercise 2.3.2: Path Trace 2">
+              <div class="exercise-label">2.3.2 — Motion Verification</div>
             </div>
           </div>
         </div>
@@ -455,7 +500,7 @@
     </div>
   </div>
 
-  <!-- CARD 2 -->
+  <!-- CARD 2: MOTOR SPEED CONTROL -->
   <div class="project-card" id="card2">
     <div class="project-card-header" onclick="toggleCard('card2')">
       <span class="project-num">02</span>
@@ -473,13 +518,28 @@
       <div class="project-grid">
         <div>
           <h4>Overview</h4>
-          <p>Designed and tested a closed-loop motor speed control system using feedback control principles. System includes sensor integration, signal conditioning, and microcontroller implementation.</p>
+          <p>Designed and tested a closed-loop motor speed control system using feedback control principles. System includes sensor integration, signal conditioning, and microcontroller implementation for precise motor velocity regulation.</p>
         </div>
+        <div>
+          <h4>Key Components</h4>
+          <ul>
+            <li>DC motor with encoder feedback</li>
+            <li>PID controller implementation</li>
+            <li>PWM signal generation</li>
+            <li>Real-time telemetry system</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project Overview Image -->
+      <div class="img-block">
+        <img src="images/projects/cartCad.png" alt="Project 02: Motor Speed Control CAD Model">
+        <div class="img-caption">Cart Platform with Motor Control System</div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 3 -->
+  <!-- CARD 3: MULTI-AXIS MOTION PLATFORM -->
   <div class="project-card" id="card3">
     <div class="project-card-header" onclick="toggleCard('card3')">
       <span class="project-num">03</span>
@@ -497,7 +557,28 @@
       <div class="project-grid">
         <div>
           <h4>Overview</h4>
-          <p>Integrated multi-axis motion system combining previous projects. XY gantry platform with rotational actuator controlled via real-time feedback system.</p>
+          <p>Integrated multi-axis motion system combining linkage design and motor control. XY gantry platform with four-bar linkage actuator controlled via closed-loop feedback for automated 3D positioning and manipulation tasks.</p>
+        </div>
+        <div>
+          <h4>Integration</h4>
+          <ul>
+            <li>XY gantry driven by stepper motors</li>
+            <li>Four-bar linkage on Z-axis</li>
+            <li>Unified control interface</li>
+            <li>Automated motion sequencing</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project Overview Images -->
+      <div class="img-row">
+        <div class="img-block">
+          <img src="images/projects/boxCad.png" alt="Project 03: Multi-Axis Platform CAD Model">
+          <div class="img-caption">3D CAD Assembly</div>
+        </div>
+        <div class="img-block">
+          <img src="images/projects/IMG_1032.jpeg" alt="Project 03: Team Photo with Built System">
+          <div class="img-caption">Final Integration & Team</div>
         </div>
       </div>
     </div>
