@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ME 360 – Design Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --scarlet: #CC0000;
+    --bg: #f5f4f1;
+    --bg2: #fff;
+    --border: #ddd;
+    --text: #1a1a1a;
+    --muted: #666;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--scarlet);
+    letter-spacing: 0.1em;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.15s;
+  }
+  nav a:hover { color: var(--text); }
+
+  .hero {
+    padding: 5rem 2.5rem 4rem;
+    max-width: 760px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--scarlet);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero p { font-size: 1rem; color: var(--muted); max-width: 540px; }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .meta-item label {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--scarlet);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .meta-item span { font-size: 0.85rem; }
+
+  .projects { padding: 2rem 2.5rem 5rem; }
+
+  .projects-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .project-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.4rem 1.8rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .project-card-header:hover { background: #fafafa; }
+
+  .project-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--scarlet);
+    letter-spacing: 0.06em;
+    min-width: 28px;
+  }
+
+  .project-info { flex: 1; }
+
+  .project-info h3 { font-size: 1rem; font-weight: 500; line-height: 1.3; }
+
+  .project-tags { display: flex; gap: 0.4rem; margin-top: 0.4rem; flex-wrap: wrap; }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    background: var(--bg);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .tag-red { background: #fff0f0; color: var(--scarlet); border-color: #f5c0c0; }
+
+  .expand-icon {
+    font-size: 1.1rem;
+    color: var(--muted);
+    transition: transform 0.25s;
+    line-height: 1;
+  }
+  .project-card.open .expand-icon { transform: rotate(45deg); }
+
+  .project-body {
+    display: none;
+    padding: 0 1.8rem 1.8rem;
+    border-top: 1px solid var(--border);
+  }
+  .project-card.open .project-body { display: block; }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 600px) { .project-grid { grid-template-columns: 1fr; } }
+
+  .project-grid h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--scarlet);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-grid p { font-size: 0.88rem; color: var(--muted); }
+
+  .project-grid ul { list-style: none; padding: 0; }
+  .project-grid ul li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding: 0.35rem 0 0.35rem 1rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .project-grid ul li::before { content: '–'; position: absolute; left: 0; color: var(--scarlet); }
+
+  .spec-table { width: 100%; border-collapse: collapse; }
+  .spec-table td { padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+  .spec-table td:first-child {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    width: 45%;
+  }
+
+  .placeholder {
+    grid-column: span 2;
+    border: 1px dashed #ddd;
+    border-radius: 3px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .placeholder p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: #bbb;
+    letter-spacing: 0.08em;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.8rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  footer p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ME 360 · Design Portfolio</div>
+  <ul><li><a href="#projects">Projects</a></li></ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">ME 360 – Electromechanical Design · Spring 2026</div>
+  <h1>Design Portfolio</h1>
+  <p>Three semester projects covering mechanism synthesis, motor speed control, and multi-axis motion systems — Boston University College of Engineering.</p>
+  <div class="hero-meta">
+    <div class="meta-item"><label>Course</label><span>ME 360</span></div>
+    <div class="meta-item"><label>Institution</label><span>Boston University</span></div>
+    <div class="meta-item"><label>Semester</label><span>Spring 2026</span></div>
+  </div>
+</div>
+
+<div class="projects" id="projects">
+  <div class="projects-label">Projects — 01 through 03</div>
+
+  <div class="project-card" id="card1">
+    <div class="project-card-header" onclick="toggleCard('card1')">
+      <span class="project-num">01</span>
+      <div class="project-info">
+        <h3>Four-Bar Linkage — Container Challenge</h3>
+        <div class="project-tags">
+          <span class="tag tag-red">Mechanism Synthesis</span>
+          <span class="tag">Kinematics</span>
+          <span class="tag">Linkage Design</span>
+        </div>
+      </div>
+      <span class="expand-icon">+</span>
+    </div>
+    <div class="project-body">
+      <div class="project-grid">
+        <div>
+          <h4>Overview</h4>
+          <p>Designed a four-bar linkage to automate a trash container tray. The tray starts flat on top (position A), moves out for user deposit, then rotates to dump contents into a rear opening (position B) — without the linkage crossing the container interior. Pivots constrained to container side walls only.</p>
+        </div>
+        <div>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Tray moves from top (A) to side dump position (B)</li>
+            <li>Pivot points on container sides only, no extensions</li>
+            <li>Linkage must not traverse the container interior</li>
+            <li>Positions A and B are the extremes of motion</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Key Dimensions</h4>
+          <table class="spec-table">
+            <tr><td>Top opening</td><td>35 cm (15 + 5 + 15)</td></tr>
+            <tr><td>Vertical drop A → B</td><td>15 cm</td></tr>
+            <tr><td>Side opening height</td><td>5 cm from base</td></tr>
+            <tr><td>Pivot constraint</td><td>Side walls only</td></tr>
+          </table>
+        </div>
+        <div>
+          <h4>Deliverables</h4>
+          <ul>
+            <li>Graphical two-position synthesis</li>
+            <li>Ground pivot locations and all link lengths</li>
+            <li>Verification of motion extremes at A and B</li>
+            <li>Coupler path trace through full range of motion</li>
+          </ul>
+        </div>
+        <div class="placeholder"><p>[ Insert linkage diagram / path trace here ]</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card" id="card2">
+    <div class="project-card-header" onclick="toggleCard('card2')">
+      <span class="project-num">02</span>
+      <div class="project-info">
+        <h3>Motor Speed Control — Unstable Load Transport</h3>
+        <div class="project-tags">
+          <span class="tag tag-red">Motor Control</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">Dynamic Simulation</span>
+          <span class="tag">Prototype</span>
+        </div>
+      </div>
+      <span class="expand-icon">+</span>
+    </div>
+    <div class="project-body">
+      <div class="project-grid">
+        <div>
+          <h4>Overview</h4>
+          <p>Designed and built a motor-driven cart that transports a 1-foot vertical aluminum bar (8020 extrusion) across a variable distance (5–10 ft) and back, stop to stop, without toppling. The bar rests on the platform base only — no fasteners or side supports. Objective was minimum transport time.</p>
+        </div>
+        <div>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Transport 1 ft bar stop-to-stop, distance randomized at competition</li>
+            <li>Bar must stand at rest at end of trial</li>
+            <li>Arduino control sketch uploaded day-of</li>
+            <li>Wheel diameter optimized from simulation</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hardware</h4>
+          <table class="spec-table">
+            <tr><td>Actuator</td><td>12V DC gear motor</td></tr>
+            <tr><td>Controller</td><td>Arduino UNO + power amp</td></tr>
+            <tr><td>Load</td><td>8020 1010 extrusion, 1 ft</td></tr>
+            <tr><td>Structure</td><td>3D print + wood transmission</td></tr>
+          </table>
+        </div>
+        <div>
+          <h4>Approach</h4>
+          <ul>
+            <li>SolidWorks multibody sim to find minimum time</li>
+            <li>Analytical stability condition as baseline check</li>
+            <li>Trapezoidal velocity profile on Arduino</li>
+            <li>Wheel diameter balancing torque and speed</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Result</h4>
+          <p>Competition time: <strong>[ Insert ]</strong><br><br>Key finding: bar tipping threshold, not motor torque, governed the maximum allowed acceleration.</p>
+        </div>
+        <div>
+          <h4>Reflection</h4>
+          <p>Simulation tipping threshold matched the analytical prediction closely. Gear ratio selection was the most consequential design decision for achieving minimum time.</p>
+        </div>
+        <div class="placeholder"><p>[ Insert prototype photo / simulation screenshot / video ]</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card" id="card3">
+    <div class="project-card-header" onclick="toggleCard('card3')">
+      <span class="project-num">03</span>
+      <div class="project-info">
+        <h3>2.5 DOF Cartesian Motion System</h3>
+        <div class="project-tags">
+          <span class="tag tag-red">Mechatronics</span>
+          <span class="tag">Stepper Motors</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">Linear Stages</span>
+        </div>
+      </div>
+      <span class="expand-icon">+</span>
+    </div>
+    <div class="project-body">
+      <div class="project-grid">
+        <div>
+          <h4>Overview</h4>
+          <p>Designed and built a 2.5-DOF Cartesian motion system for a user-defined task, with a minimum 2.5 × 2.5 in work area. Integrates stepper motors, belt-driven linear stages, and a custom end effector. Compact enough to fit in a backpack and assemble in under 10 minutes.</p>
+        </div>
+        <div>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Work area ≥ 2.5 × 2.5 in</li>
+            <li>Backpack portable, assembly ≤ 10 min by one person</li>
+            <li>All custom parts 3D printed or laser cut</li>
+            <li>No tape/glue — proper snap fits and fasteners throughout</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Application</h4>
+          <table class="spec-table">
+            <tr><td>Application</td><td>[ Insert ]</td></tr>
+            <tr><td>End effector</td><td>[ Insert ]</td></tr>
+            <tr><td>Axes</td><td>X, Y + end effector</td></tr>
+            <tr><td>Work area</td><td>[ Insert actual dims ]</td></tr>
+          </table>
+        </div>
+        <div>
+          <h4>Mechanical</h4>
+          <ul>
+            <li>8020 extrusion as structure and linear guide rails</li>
+            <li>GT2 belts with stepper drives for X and Y</li>
+            <li>Custom 3D-printed carriages and bearing blocks</li>
+            <li>All joints designed for clean assembly/disassembly</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Electronics</h4>
+          <ul>
+            <li>Stepper drivers integrated with microcontroller</li>
+            <li>Motion path programmed for chosen task</li>
+            <li>End effector via servo or solenoid</li>
+            <li>Wiring routed and secured for clean operation</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Reflection</h4>
+          <p>[ Insert your reflection on design decisions, trade-offs, what worked, what you'd change. ]</p>
+        </div>
+        <div class="placeholder"><p>[ Insert CAD model / prototype photo / demo video ]</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>ME 360 · Boston University · Spring 2026</p>
+  <p>Electromechanical Design</p>
+</footer>
+
+<script>
+  function toggleCard(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+</script>
+</body>
+</html>
