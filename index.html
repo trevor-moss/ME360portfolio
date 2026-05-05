@@ -424,16 +424,18 @@
           <div>
             <h4>Approach</h4>
             <ul>
-              <li>Graphical two-position synthesis through perpendicular bisectors</li>
+              <li>Graphical two-position synthesis</li>
+              <li>Ground pivot locations and all link lengths</li>
               <li>Verification of motion extremes at A and B</li>
+              <li>Coupler path trace through full range of motion</li>
             </ul>
           </div>
         </div>
 
         <!-- Project Overview Image -->
         <div class="img-block">
-          <img src="images/projects/Timeline 1.gif" alt="Project 01: Four-Bar Linkage Motion Timeline">
-          <div class="img-caption">Waste bin mechanism animation</div>
+          <img src="images/projects/Timeline 1.gif" alt="Project 01: Four-Bar Linkage Motion Simulation">
+          <div class="img-caption">Motion simulation</div>
         </div>
       </div>
 
@@ -516,23 +518,40 @@
       <div class="project-grid">
         <div>
           <h4>Overview</h4>
-          <p>Designed and tested a closed-loop motor speed control system using feedback control principles. System includes sensor integration, signal conditioning, and microcontroller implementation for precise motor velocity regulation.</p>
+          <p>Designed and built a motor-driven cart platform using closed-loop speed control. The system uses 3D printed motor brackets and wheels with interlocking laser-cut wood plates to balance structural integrity and light weight.</p>
         </div>
         <div>
-          <h4>Key Components</h4>
+          <h4>Structure</h4>
           <ul>
+            <li>3D printed motor brackets and wheels</li>
+            <li>Interlocking laser-cut wood plates</li>
             <li>DC motor with encoder feedback</li>
             <li>PID controller implementation</li>
-            <li>PWM signal generation</li>
-            <li>Real-time telemetry system</li>
           </ul>
+        </div>
+        <div>
+          <h4>Approach</h4>
+          <ul>
+            <li>SolidWorks simulation to find maximum acceleration</li>
+            <li>Static tipping condition validation</li>
+            <li>Trapezoidal velocity profile with smoothing curve option</li>
+            <li>Wheel diameter selection to balance torque and maximum speed</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Result</h4>
+          <p>Custom velocity profile allowed high velocities without tipping the brackets, enabling smooth acceleration profiles and reliable high-speed operation.</p>
+        </div>
+        <div>
+          <h4>Reflection</h4>
+          <p>Simulated tipping threshold was validated analytically, but hard to reach with the physical model. Many external conditions were not simulated, including floor smoothness, axle centering, and 3D print quality.</p>
         </div>
       </div>
 
       <!-- Project Overview Image -->
       <div class="img-block">
         <img src="images/projects/cartCad.png" alt="Project 02: Motor Speed Control CAD Model">
-        <div class="img-caption">Cart platform with tabbed and slotted joints</div>
+        <div class="img-caption">Cart platform with motor control system</div>
       </div>
     </div>
   </div>
@@ -542,7 +561,7 @@
     <div class="project-card-header" onclick="toggleCard('card3')">
       <span class="project-num">03</span>
       <div class="project-info">
-        <h3>Multi-Axis Motion Platform</h3>
+        <h3>3-DOF Motion Platform — Labyrinth</h3>
         <div class="project-tags">
           <span class="tag tag-red">Mechanical Design</span>
           <span class="tag">Automation</span>
@@ -555,16 +574,60 @@
       <div class="project-grid">
         <div>
           <h4>Overview</h4>
-          <p>Integrated multi-axis motion system combining linkage design and motor control. XY gantry platform with four-bar linkage actuator controlled via closed-loop feedback for automated 3D positioning and manipulation tasks.</p>
+          <p>Designed and built a 3-DOF motion system using two polar axes to replicate and play the tabletop game "Labyrinth" with a joystick. System integrates three stepper motors for tilt control and a rack and pinion ball return system, with a complex axle and string assembly to tilt the gimbal stage.</p>
         </div>
         <div>
-          <h4>Integration</h4>
+          <h4>Requirements</h4>
           <ul>
-            <li>XY gantry driven by stepper motors</li>
-            <li>Four-bar linkage on Z-axis</li>
-            <li>Unified control interface</li>
-            <li>Automated motion sequencing</li>
+            <li>Two polar degrees of freedom for maze tilt</li>
+            <li>Linear Z-axis for ball return mechanism</li>
+            <li>Joystick control interface</li>
+            <li>Reliable ball return system</li>
           </ul>
+        </div>
+        <div>
+          <h4>Application</h4>
+          <p>Labyrinth — tabletop game automation</p>
+        </div>
+        <div>
+          <h4>Axes</h4>
+          <ul>
+            <li>Polar X & Y — gimbal tilt control for maze orientation</li>
+            <li>Linear Z — ball return lift mechanism</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Work Area</h4>
+          <ul>
+            <li>Maze dimensions: 22.5 cm × 22.5 cm</li>
+            <li>Outer box: 25.5 cm × 25.5 cm</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <div>
+          <h4>Mechanical</h4>
+          <ul>
+            <li>Laser-cut wood layup maze</li>
+            <li>Laser-cut frames and gimbal</li>
+            <li>Axle and twine gimbal control</li>
+            <li>Custom 3D printed rack and pinion</li>
+            <li>3D printed ball return tracks</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Electronics</h4>
+          <ul>
+            <li>Three NEMA 17 stepper motors</li>
+            <li>Stepper motor drivers with microcontroller</li>
+            <li>Tilting within angle limits controlled by joystick</li>
+            <li>Ball return activated by pressing down on joystick</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Reflection</h4>
+          <p>The 2.5DOF project was particularly exciting as we were permitted to swap two linear degrees of freedom for direct rotational control. The most complex part was the assembly — gimbal frames were built in CAD but required multiple iterations for clearances. Of particular note were the screws used to secure various parts to the external box that were not part of the original CAD. Tension between the rack and pinion was also a problem, with a stop-gap solution of tying the rack to the pinion motor mount with twine, and eventually a 3D printed part combining the motor mount and rack.</p>
         </div>
       </div>
 
@@ -575,8 +638,8 @@
           <div class="img-caption">3D CAD assembly</div>
         </div>
         <div class="img-block">
-          <img src="images/projects/IMG_1032.jpeg" alt="Project 03: Team Photo with Built System">
-          <div class="img-caption">Final integration & testing day</div>
+          <img src="images/projects/IMG_1032.jpeg" alt="Project 03: Team with Built System">
+          <div class="img-caption">Final integration & team</div>
         </div>
       </div>
     </div>
